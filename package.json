@@ -5,13 +5,17 @@
   "dependencies": {
     "@material-ui/core": "^4.9.0",
     "@material-ui/icons": "^4.5.1",
+    "@zeit/next-css": "latest",
+    "@zeit/next-sass": "^1.0.1",
     "clsx": "^1.0.4",
+    "css-loader": "^3.4.2",
     "fibers": "^4.0.2",
     "next": "^9.2.1",
-    "node-sass": "^4.13.1",
+    "node-sass": "^4.12.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "sass": "^1.25.1-test.1"
+    "sass": "^1.25.0",
+    "webpack": "^4.41.5"
   },
   "devDependencies": {
     "@types/node": "^13.5.0",
