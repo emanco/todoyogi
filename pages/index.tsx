@@ -1,40 +1,27 @@
-import React from 'react';
-import Container from '@material-ui/core/Container';
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
-import MuiLink from '@material-ui/core/Link';
-import ProTip from '../src/ProTip';
-import Link from '../src/Link';
+import React from "react";
+import Paper from "@material-ui/core/Paper";
+import { ViewState } from "@devexpress/dx-react-scheduler";
+import {
+  Scheduler,
+  WeekView,
+  Appointments
+} from "@devexpress/dx-react-scheduler-material-ui";
+import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+import { blue } from "@material-ui/core/colors";
+import { appointments } from "../src/data/data";
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <MuiLink color="inherit" href="https://material-ui.com/">
-        Your Website
-      </MuiLink>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+const theme = createMuiTheme({ palette: { type: "light", primary: blue } });
 
-export default function Index() {
+export default function Calendar() {
   return (
-    <Container maxWidth="sm">
-      <Box my={4}>
-        <Typography variant="h4" component="h1" gutterBottom>
-          Next.js with TypeScript example
-        </Typography>
-        <Link href="/about" color="secondary">
-          Go to the about page
-        </Link>
-        <Link href="/calendar" color="secondary">
-          Calendar test
-        </Link>
-        <ProTip />
-        <Copyright />
-      </Box>
-    </Container>
+    <MuiThemeProvider theme={theme}>
+      <Paper>
+        <Scheduler data={appointments}>
+          <ViewState currentDate="2018-06-28" />
+          <WeekView startDayHour={9} endDayHour={19} />
+          <Appointments />
+        </Scheduler>
+      </Paper>
+    </MuiThemeProvider>
   );
 }
