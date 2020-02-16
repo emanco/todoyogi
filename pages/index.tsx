@@ -1,27 +1,14 @@
 import React from "react";
-import Paper from "@material-ui/core/Paper";
-import { ViewState } from "@devexpress/dx-react-scheduler";
-import {
-  Scheduler,
-  WeekView,
-  Appointments
-} from "@devexpress/dx-react-scheduler-material-ui";
-import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
-import { blue } from "@material-ui/core/colors";
-import { appointments } from "../src/data/data";
+import Container from '@material-ui/core/Container';
+import Box from '@material-ui/core/Box';
+import Schedule from "./schedule";
 
-const theme = createMuiTheme({ palette: { type: "light", primary: blue } });
-
-export default function Calendar() {
+export default function Index() {
   return (
-    <MuiThemeProvider theme={theme}>
-      <Paper>
-        <Scheduler data={appointments}>
-          <ViewState currentDate="2018-06-28" />
-          <WeekView startDayHour={9} endDayHour={19} />
-          <Appointments />
-        </Scheduler>
-      </Paper>
-    </MuiThemeProvider>
+    <Container>
+      <Box>
+        <Schedule/>
+      </Box>
+    </Container>
   );
 }
