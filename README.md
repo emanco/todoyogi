@@ -8,7 +8,7 @@ Execute `yarn` or `npm i` to install all dependencies.
 
 ## Getting started
 
-Run `npm run dev` to initialise local develeopment environment.
+Run `npm run dev` to initialise local development environment.
 
 ## Compiling the build
 
