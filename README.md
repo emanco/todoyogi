@@ -16,7 +16,7 @@ Execute `npm run build` to export a production ready build.
 
 ## Execute a local Express server
 
-After creating the artefact you can render the page frome the server with `npm run start`.
+After creating the artefact you can render the page from the server with `npm run start`.
 
 ## Dependencies
 
