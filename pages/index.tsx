@@ -35,7 +35,6 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import Chip from '@material-ui/core/Chip';
 import Button from '@material-ui/core/Button';
 
 
@@ -43,7 +42,17 @@ import Schedule from "./schedule";
 import {blue} from "@material-ui/core/colors";
 import Paper from "@material-ui/core/Paper";
 
-const drawerWidth = 350;
+
+import 'date-fns';
+import Grid from '@material-ui/core/Grid';
+import DateFnsUtils from '@date-io/date-fns';
+import {
+    MuiPickersUtilsProvider,
+    KeyboardTimePicker,
+    KeyboardDatePicker,
+} from '@material-ui/pickers';
+
+const drawerWidth = 500;
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -217,6 +226,13 @@ export default function Index() {
     setAnchorEl(null);
   };
 
+    const [selectedDate, setSelectedDate] = React.useState<Date | null>(
+        new Date('2014-08-18T21:11:54'),
+    );
+
+    const handleDateChange = (date: Date | null) => {
+        setSelectedDate(date);
+    };
 
   const [value, setValue] = React.useState(0);
 
@@ -334,19 +350,31 @@ export default function Index() {
                         </div>
                       </ExpansionPanelSummary>
                       <ExpansionPanelDetails className={classes.details}>
-                        <div className={classes.column} />
-                        <div className={classes.column}>
-                          <Chip label="Barbados" onDelete={() => {}} />
-                        </div>
-                        <div className={clsx(classes.column, classes.helper)}>
-                          <Typography variant="caption">
-                            Select your destination of choice
-                            <br />
-                            <a href="#secondary-heading-and-columns" className={classes.link}>
-                              Learn more
-                            </a>
-                          </Typography>
-                        </div>
+                          <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                              <Grid container justify="space-around">
+                                  <KeyboardDatePicker
+                                      margin="normal"
+                                      id="date-picker-dialog"
+                                      label="Date picker dialog"
+                                      format="MM/dd/yyyy"
+                                      value={selectedDate}
+                                      onChange={handleDateChange}
+                                      KeyboardButtonProps={{
+                                          'aria-label': 'change date',
+                                      }}
+                                  />
+                                  <KeyboardTimePicker
+                                      margin="normal"
+                                      id="time-picker"
+                                      label="Time picker"
+                                      value={selectedDate}
+                                      onChange={handleDateChange}
+                                      KeyboardButtonProps={{
+                                          'aria-label': 'change time',
+                                      }}
+                                  />
+                              </Grid>
+                          </MuiPickersUtilsProvider>
                       </ExpansionPanelDetails>
                       <Divider />
                       <ExpansionPanelActions>
