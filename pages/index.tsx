@@ -42,6 +42,7 @@ import Schedule from "./schedule";
 import {blue} from "@material-ui/core/colors";
 import Paper from "@material-ui/core/Paper";
 
+import Chip from '@material-ui/core/Chip';
 
 import 'date-fns';
 import Grid from '@material-ui/core/Grid';
@@ -52,7 +53,7 @@ import {
     KeyboardDatePicker,
 } from '@material-ui/pickers';
 
-const drawerWidth = 500;
+const drawerWidth = 600;
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -166,10 +167,15 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     heading: {
       fontSize: theme.typography.pxToRem(15),
-      flexBasis: '50%',
+      flexBasis: '75%',
       flexShrink: 0,
+      alignItems: 'center',
+    },
+    description: {
+      fontSize: theme.typography.pxToRem(13)
     },
     secondaryHeading: {
+      flexBasis: '100px',
       fontSize: theme.typography.pxToRem(15),
       color: theme.palette.text.secondary,
     },
@@ -204,7 +210,7 @@ export default function Index() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const openProfile = Boolean(anchorEl);
 
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -342,39 +348,446 @@ export default function Index() {
                         aria-controls="panel1c-content"
                         id="panel1c-header"
                       >
-                        <div className={classes.column}>
-                          <Typography className={classes.heading}>Location</Typography>
-                        </div>
-                        <div className={classes.column}>
-                          <Typography className={classes.secondaryHeading}>Select trip destination</Typography>
-                        </div>
+                          <Grid container
+                                direction="row"
+                                justify="space-between"
+                                alignItems="center"
+                          >
+                              <Typography className={classes.heading}>Finalise API Specs</Typography>
+                              <Chip label="Project" color="default"/>
+                          </Grid>
+
                       </ExpansionPanelSummary>
                       <ExpansionPanelDetails className={classes.details}>
-                          <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                              <Grid container justify="space-around">
-                                  <KeyboardDatePicker
-                                      margin="normal"
-                                      id="date-picker-dialog"
-                                      label="Date picker dialog"
-                                      format="MM/dd/yyyy"
-                                      value={selectedDate}
-                                      onChange={handleDateChange}
-                                      KeyboardButtonProps={{
-                                          'aria-label': 'change date',
-                                      }}
-                                  />
-                                  <KeyboardTimePicker
-                                      margin="normal"
-                                      id="time-picker"
-                                      label="Time picker"
-                                      value={selectedDate}
-                                      onChange={handleDateChange}
-                                      KeyboardButtonProps={{
-                                          'aria-label': 'change time',
-                                      }}
-                                  />
-                              </Grid>
-                          </MuiPickersUtilsProvider>
+
+                          <Box width="100%">
+
+                              <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                                  <Grid container wrap="nowrap" spacing={2}>
+                                      <Grid item xs>
+                                          <Typography className={classes.description}>Identify and assess the data model for TodoYogi once wireframe is signed off and design is final. Note: Specs have to be done before any dev work.</Typography>
+                                      </Grid>
+                                  </Grid>
+
+                                  <Grid container
+                                        direction="row"
+                                        justify="space-between"
+                                        alignItems="center"
+                                  >
+                                      <KeyboardDatePicker
+                                          margin="normal"
+                                          id="date-picker-dialog"
+                                          label="Date picker dialog"
+                                          format="MM/dd/yyyy"
+                                          value={selectedDate}
+                                          onChange={handleDateChange}
+                                          KeyboardButtonProps={{
+                                              'aria-label': 'change date',
+                                          }}
+                                      />
+                                      <KeyboardTimePicker
+                                          margin="normal"
+                                          id="time-picker"
+                                          label="Time picker"
+                                          value={selectedDate}
+                                          onChange={handleDateChange}
+                                          KeyboardButtonProps={{
+                                              'aria-label': 'change time',
+                                          }}
+                                      />
+                                  </Grid>
+                              </MuiPickersUtilsProvider>
+                          </Box>
+                      </ExpansionPanelDetails>
+                      <Divider />
+                      <ExpansionPanelActions>
+                        <Button size="small">Cancel</Button>
+                        <Button size="small" color="primary">
+                          Save
+                        </Button>
+                      </ExpansionPanelActions>
+                    </ExpansionPanel>
+                    <ExpansionPanel>
+                      <ExpansionPanelSummary
+                        expandIcon={<ExpandMoreIcon />}
+                        aria-controls="panel1c-content"
+                        id="panel1c-header"
+                      >
+                          <Grid container
+                                direction="row"
+                                justify="space-between"
+                                alignItems="center"
+                          >
+                              <Typography className={classes.heading}>Client Demo with Martin</Typography>
+                              <Chip label="Client" color="primary"/>
+                          </Grid>
+
+                      </ExpansionPanelSummary>
+                      <ExpansionPanelDetails className={classes.details}>
+
+                          <Box width="100%">
+
+                              <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                                  <Grid container wrap="nowrap" spacing={2}>
+                                      <Grid item xs>
+                                          <Typography className={classes.description}>Showcase provisional prototype with React and Material UI directly on the continous integration cloud server.</Typography>
+                                      </Grid>
+                                  </Grid>
+
+                                  <Grid container
+                                        direction="row"
+                                        justify="space-between"
+                                        alignItems="center"
+                                  >
+                                      <KeyboardDatePicker
+                                          margin="normal"
+                                          id="date-picker-dialog"
+                                          label="Date picker dialog"
+                                          format="MM/dd/yyyy"
+                                          value={selectedDate}
+                                          onChange={handleDateChange}
+                                          KeyboardButtonProps={{
+                                              'aria-label': 'change date',
+                                          }}
+                                      />
+                                      <KeyboardTimePicker
+                                          margin="normal"
+                                          id="time-picker"
+                                          label="Time picker"
+                                          value={selectedDate}
+                                          onChange={handleDateChange}
+                                          KeyboardButtonProps={{
+                                              'aria-label': 'change time',
+                                          }}
+                                      />
+                                  </Grid>
+                              </MuiPickersUtilsProvider>
+                          </Box>
+                      </ExpansionPanelDetails>
+                      <Divider />
+                      <ExpansionPanelActions>
+                        <Button size="small">Cancel</Button>
+                        <Button size="small" color="primary">
+                          Save
+                        </Button>
+                      </ExpansionPanelActions>
+                    </ExpansionPanel>
+                    <ExpansionPanel>
+                      <ExpansionPanelSummary
+                        expandIcon={<ExpandMoreIcon />}
+                        aria-controls="panel1c-content"
+                        id="panel1c-header"
+                      >
+                          <Grid container
+                                direction="row"
+                                justify="space-between"
+                                alignItems="center"
+                          >
+                              <Typography className={classes.heading}>Dentist appointment</Typography>
+                              <Chip label="Personal" color="secondary"/>
+                          </Grid>
+
+                      </ExpansionPanelSummary>
+                      <ExpansionPanelDetails className={classes.details}>
+
+                          <Box width="100%">
+
+                              <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                                  <Grid container wrap="nowrap" spacing={2}>
+                                      <Grid item xs>
+                                          <Typography className={classes.description}>Asses dental implant cost and feasability.</Typography>
+                                      </Grid>
+                                  </Grid>
+
+                                  <Grid container
+                                        direction="row"
+                                        justify="space-between"
+                                        alignItems="center"
+                                  >
+                                      <KeyboardDatePicker
+                                          margin="normal"
+                                          id="date-picker-dialog"
+                                          label="Date picker dialog"
+                                          format="MM/dd/yyyy"
+                                          value={selectedDate}
+                                          onChange={handleDateChange}
+                                          KeyboardButtonProps={{
+                                              'aria-label': 'change date',
+                                          }}
+                                      />
+                                      <KeyboardTimePicker
+                                          margin="normal"
+                                          id="time-picker"
+                                          label="Time picker"
+                                          value={selectedDate}
+                                          onChange={handleDateChange}
+                                          KeyboardButtonProps={{
+                                              'aria-label': 'change time',
+                                          }}
+                                      />
+                                  </Grid>
+                              </MuiPickersUtilsProvider>
+                          </Box>
+                      </ExpansionPanelDetails>
+                      <Divider />
+                      <ExpansionPanelActions>
+                        <Button size="small">Cancel</Button>
+                        <Button size="small" color="primary">
+                          Save
+                        </Button>
+                      </ExpansionPanelActions>
+                    </ExpansionPanel>
+                    <ExpansionPanel>
+                      <ExpansionPanelSummary
+                        expandIcon={<ExpandMoreIcon />}
+                        aria-controls="panel1c-content"
+                        id="panel1c-header"
+                      >
+                          <Grid container
+                                direction="row"
+                                justify="space-between"
+                                alignItems="center"
+                          >
+                              <Typography className={classes.heading}>Sort out unpaid bills</Typography>
+                              <Chip label="Finance" color="primary"/>
+                          </Grid>
+
+                      </ExpansionPanelSummary>
+                      <ExpansionPanelDetails className={classes.details}>
+
+                          <Box width="100%">
+
+                              <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                                  <Grid container wrap="nowrap" spacing={2}>
+                                      <Grid item xs>
+                                          <Typography className={classes.description}>Run through all overdue bills before the end of the month.</Typography>
+                                      </Grid>
+                                  </Grid>
+
+                                  <Grid container
+                                        direction="row"
+                                        justify="space-between"
+                                        alignItems="center"
+                                  >
+                                      <KeyboardDatePicker
+                                          margin="normal"
+                                          id="date-picker-dialog"
+                                          label="Date picker dialog"
+                                          format="MM/dd/yyyy"
+                                          value={selectedDate}
+                                          onChange={handleDateChange}
+                                          KeyboardButtonProps={{
+                                              'aria-label': 'change date',
+                                          }}
+                                      />
+                                      <KeyboardTimePicker
+                                          margin="normal"
+                                          id="time-picker"
+                                          label="Time picker"
+                                          value={selectedDate}
+                                          onChange={handleDateChange}
+                                          KeyboardButtonProps={{
+                                              'aria-label': 'change time',
+                                          }}
+                                      />
+                                  </Grid>
+                              </MuiPickersUtilsProvider>
+                          </Box>
+                      </ExpansionPanelDetails>
+                      <Divider />
+                      <ExpansionPanelActions>
+                        <Button size="small">Cancel</Button>
+                        <Button size="small" color="primary">
+                          Save
+                        </Button>
+                      </ExpansionPanelActions>
+                    </ExpansionPanel>
+                    <ExpansionPanel>
+                      <ExpansionPanelSummary
+                        expandIcon={<ExpandMoreIcon />}
+                        aria-controls="panel1c-content"
+                        id="panel1c-header"
+                      >
+                          <Grid container
+                                direction="row"
+                                justify="space-between"
+                                alignItems="center"
+                          >
+                              <Typography className={classes.heading}>Final budget revision</Typography>
+                              <Chip label="Personal" color="default"/>
+                          </Grid>
+
+                      </ExpansionPanelSummary>
+                      <ExpansionPanelDetails className={classes.details}>
+
+                          <Box width="100%">
+
+                              <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                                  <Grid container wrap="nowrap" spacing={2}>
+                                      <Grid item xs>
+                                          <Typography className={classes.description}>Asses current balance and next quarter forecast.</Typography>
+                                      </Grid>
+                                  </Grid>
+
+                                  <Grid container
+                                        direction="row"
+                                        justify="space-between"
+                                        alignItems="center"
+                                  >
+                                      <KeyboardDatePicker
+                                          margin="normal"
+                                          id="date-picker-dialog"
+                                          label="Date picker dialog"
+                                          format="MM/dd/yyyy"
+                                          value={selectedDate}
+                                          onChange={handleDateChange}
+                                          KeyboardButtonProps={{
+                                              'aria-label': 'change date',
+                                          }}
+                                      />
+                                      <KeyboardTimePicker
+                                          margin="normal"
+                                          id="time-picker"
+                                          label="Time picker"
+                                          value={selectedDate}
+                                          onChange={handleDateChange}
+                                          KeyboardButtonProps={{
+                                              'aria-label': 'change time',
+                                          }}
+                                      />
+                                  </Grid>
+                              </MuiPickersUtilsProvider>
+                          </Box>
+                      </ExpansionPanelDetails>
+                      <Divider />
+                      <ExpansionPanelActions>
+                        <Button size="small">Cancel</Button>
+                        <Button size="small" color="primary">
+                          Save
+                        </Button>
+                      </ExpansionPanelActions>
+                    </ExpansionPanel>
+                    <ExpansionPanel>
+                      <ExpansionPanelSummary
+                        expandIcon={<ExpandMoreIcon />}
+                        aria-controls="panel1c-content"
+                        id="panel1c-header"
+                      >
+                          <Grid container
+                                direction="row"
+                                justify="space-between"
+                                alignItems="center"
+                          >
+                              <Typography className={classes.heading}>Renew Netflix subscription</Typography>
+                              <Chip label="Entertainment" color="secondary"/>
+                          </Grid>
+
+                      </ExpansionPanelSummary>
+                      <ExpansionPanelDetails className={classes.details}>
+
+                          <Box width="100%">
+
+                              <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                                  <Grid container wrap="nowrap" spacing={2}>
+                                      <Grid item xs>
+                                          <Typography className={classes.description}>Might consider to upgrade to the 4k plan.</Typography>
+                                      </Grid>
+                                  </Grid>
+
+                                  <Grid container
+                                        direction="row"
+                                        justify="space-between"
+                                        alignItems="center"
+                                  >
+                                      <KeyboardDatePicker
+                                          margin="normal"
+                                          id="date-picker-dialog"
+                                          label="Date picker dialog"
+                                          format="MM/dd/yyyy"
+                                          value={selectedDate}
+                                          onChange={handleDateChange}
+                                          KeyboardButtonProps={{
+                                              'aria-label': 'change date',
+                                          }}
+                                      />
+                                      <KeyboardTimePicker
+                                          margin="normal"
+                                          id="time-picker"
+                                          label="Time picker"
+                                          value={selectedDate}
+                                          onChange={handleDateChange}
+                                          KeyboardButtonProps={{
+                                              'aria-label': 'change time',
+                                          }}
+                                      />
+                                  </Grid>
+                              </MuiPickersUtilsProvider>
+                          </Box>
+                      </ExpansionPanelDetails>
+                      <Divider />
+                      <ExpansionPanelActions>
+                        <Button size="small">Cancel</Button>
+                        <Button size="small" color="primary">
+                          Save
+                        </Button>
+                      </ExpansionPanelActions>
+                    </ExpansionPanel>
+                    <ExpansionPanel>
+                      <ExpansionPanelSummary
+                        expandIcon={<ExpandMoreIcon />}
+                        aria-controls="panel1c-content"
+                        id="panel1c-header"
+                      >
+                          <Grid container
+                                direction="row"
+                                justify="space-between"
+                                alignItems="center"
+                          >
+                              <Typography className={classes.heading}>Plan trip to Paris</Typography>
+                              <Chip label="Holidays" color="primary"/>
+                          </Grid>
+
+                      </ExpansionPanelSummary>
+                      <ExpansionPanelDetails className={classes.details}>
+
+                          <Box width="100%">
+
+                              <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                                  <Grid container wrap="nowrap" spacing={2}>
+                                      <Grid item xs>
+                                          <Typography className={classes.description}>Accomodation and travel needs to be booked ahead.</Typography>
+                                      </Grid>
+                                  </Grid>
+
+                                  <Grid container
+                                        direction="row"
+                                        justify="space-between"
+                                        alignItems="center"
+                                  >
+                                      <KeyboardDatePicker
+                                          margin="normal"
+                                          id="date-picker-dialog"
+                                          label="Date picker dialog"
+                                          format="MM/dd/yyyy"
+                                          value={selectedDate}
+                                          onChange={handleDateChange}
+                                          KeyboardButtonProps={{
+                                              'aria-label': 'change date',
+                                          }}
+                                      />
+                                      <KeyboardTimePicker
+                                          margin="normal"
+                                          id="time-picker"
+                                          label="Time picker"
+                                          value={selectedDate}
+                                          onChange={handleDateChange}
+                                          KeyboardButtonProps={{
+                                              'aria-label': 'change time',
+                                          }}
+                                      />
+                                  </Grid>
+                              </MuiPickersUtilsProvider>
+                          </Box>
                       </ExpansionPanelDetails>
                       <Divider />
                       <ExpansionPanelActions>
@@ -388,26 +801,398 @@ export default function Index() {
 
                 </TabPanel>
                 <TabPanel value={value} index={1}>
-                  Item Two
+                    <ExpansionPanel>
+                        <ExpansionPanelSummary
+                            expandIcon={<ExpandMoreIcon />}
+                            aria-controls="panel1c-content"
+                            id="panel1c-header"
+                        >
+                            <Grid container
+                                  direction="row"
+                                  justify="space-between"
+                                  alignItems="center"
+                            >
+                                <Typography className={classes.heading}>Set up Continous Integration</Typography>
+                                <Chip label="Overdue" color="secondary"/>
+                            </Grid>
+
+                        </ExpansionPanelSummary>
+                        <ExpansionPanelDetails className={classes.details}>
+
+                            <Box width="100%">
+
+                                <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                                    <Grid container wrap="nowrap" spacing={2}>
+                                        <Grid item xs>
+                                            <Typography className={classes.description}>Showcase provisional prototype with React and Material UI directly on the continous integration cloud server.</Typography>
+                                        </Grid>
+                                    </Grid>
+
+                                    <Grid container
+                                          direction="row"
+                                          justify="space-between"
+                                          alignItems="center"
+                                    >
+                                        <KeyboardDatePicker
+                                            margin="normal"
+                                            id="date-picker-dialog"
+                                            label="Date picker dialog"
+                                            format="MM/dd/yyyy"
+                                            value={selectedDate}
+                                            onChange={handleDateChange}
+                                            KeyboardButtonProps={{
+                                                'aria-label': 'change date',
+                                            }}
+                                        />
+                                        <KeyboardTimePicker
+                                            margin="normal"
+                                            id="time-picker"
+                                            label="Time picker"
+                                            value={selectedDate}
+                                            onChange={handleDateChange}
+                                            KeyboardButtonProps={{
+                                                'aria-label': 'change time',
+                                            }}
+                                        />
+                                    </Grid>
+                                </MuiPickersUtilsProvider>
+                            </Box>
+                        </ExpansionPanelDetails>
+                        <Divider />
+                        <ExpansionPanelActions>
+                            <Button size="small">Cancel</Button>
+                            <Button size="small" color="primary">
+                                Save
+                            </Button>
+                        </ExpansionPanelActions>
+                    </ExpansionPanel>
+                    <ExpansionPanel>
+                        <ExpansionPanelSummary
+                            expandIcon={<ExpandMoreIcon />}
+                            aria-controls="panel1c-content"
+                            id="panel1c-header"
+                        >
+                            <Grid container
+                                  direction="row"
+                                  justify="space-between"
+                                  alignItems="center"
+                            >
+                                <Typography className={classes.heading}>Renew Netflix subscription</Typography>
+                                <Chip label="Overdue" color="secondary"/>
+                            </Grid>
+
+                        </ExpansionPanelSummary>
+                        <ExpansionPanelDetails className={classes.details}>
+
+                            <Box width="100%">
+
+                                <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                                    <Grid container wrap="nowrap" spacing={2}>
+                                        <Grid item xs>
+                                            <Typography className={classes.description}>Might consider to upgrade to the 4k plan.</Typography>
+                                        </Grid>
+                                    </Grid>
+
+                                    <Grid container
+                                          direction="row"
+                                          justify="space-between"
+                                          alignItems="center"
+                                    >
+                                        <KeyboardDatePicker
+                                            margin="normal"
+                                            id="date-picker-dialog"
+                                            label="Date picker dialog"
+                                            format="MM/dd/yyyy"
+                                            value={selectedDate}
+                                            onChange={handleDateChange}
+                                            KeyboardButtonProps={{
+                                                'aria-label': 'change date',
+                                            }}
+                                        />
+                                        <KeyboardTimePicker
+                                            margin="normal"
+                                            id="time-picker"
+                                            label="Time picker"
+                                            value={selectedDate}
+                                            onChange={handleDateChange}
+                                            KeyboardButtonProps={{
+                                                'aria-label': 'change time',
+                                            }}
+                                        />
+                                    </Grid>
+                                </MuiPickersUtilsProvider>
+                            </Box>
+                        </ExpansionPanelDetails>
+                        <Divider />
+                        <ExpansionPanelActions>
+                            <Button size="small">Cancel</Button>
+                            <Button size="small" color="primary">
+                                Save
+                            </Button>
+                        </ExpansionPanelActions>
+                    </ExpansionPanel>
+                    <ExpansionPanel>
+                        <ExpansionPanelSummary
+                            expandIcon={<ExpandMoreIcon />}
+                            aria-controls="panel1c-content"
+                            id="panel1c-header"
+                        >
+                            <Grid container
+                                  direction="row"
+                                  justify="space-between"
+                                  alignItems="center"
+                            >
+                                <Typography className={classes.heading}>Sort out unpaid bills</Typography>
+                                <Chip label="This Week" color="primary"/>
+                            </Grid>
+
+                        </ExpansionPanelSummary>
+                        <ExpansionPanelDetails className={classes.details}>
+
+                            <Box width="100%">
+
+                                <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                                    <Grid container wrap="nowrap" spacing={2}>
+                                        <Grid item xs>
+                                            <Typography className={classes.description}>Run through all overdue bills before the end of the month.</Typography>
+                                        </Grid>
+                                    </Grid>
+
+                                    <Grid container
+                                          direction="row"
+                                          justify="space-between"
+                                          alignItems="center"
+                                    >
+                                        <KeyboardDatePicker
+                                            margin="normal"
+                                            id="date-picker-dialog"
+                                            label="Date picker dialog"
+                                            format="MM/dd/yyyy"
+                                            value={selectedDate}
+                                            onChange={handleDateChange}
+                                            KeyboardButtonProps={{
+                                                'aria-label': 'change date',
+                                            }}
+                                        />
+                                        <KeyboardTimePicker
+                                            margin="normal"
+                                            id="time-picker"
+                                            label="Time picker"
+                                            value={selectedDate}
+                                            onChange={handleDateChange}
+                                            KeyboardButtonProps={{
+                                                'aria-label': 'change time',
+                                            }}
+                                        />
+                                    </Grid>
+                                </MuiPickersUtilsProvider>
+                            </Box>
+                        </ExpansionPanelDetails>
+                        <Divider />
+                        <ExpansionPanelActions>
+                            <Button size="small">Cancel</Button>
+                            <Button size="small" color="primary">
+                                Save
+                            </Button>
+                        </ExpansionPanelActions>
+                    </ExpansionPanel>
+                    <ExpansionPanel>
+                        <ExpansionPanelSummary
+                            expandIcon={<ExpandMoreIcon />}
+                            aria-controls="panel1c-content"
+                            id="panel1c-header"
+                        >
+                            <Grid container
+                                  direction="row"
+                                  justify="space-between"
+                                  alignItems="center"
+                            >
+                                <Typography className={classes.heading}>Dentist appointment</Typography>
+                                <Chip label="This Week" color="primary"/>
+                            </Grid>
+
+                        </ExpansionPanelSummary>
+                        <ExpansionPanelDetails className={classes.details}>
+
+                            <Box width="100%">
+
+                                <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                                    <Grid container wrap="nowrap" spacing={2}>
+                                        <Grid item xs>
+                                            <Typography className={classes.description}>Asses dental implant cost and feasability.</Typography>
+                                        </Grid>
+                                    </Grid>
+
+                                    <Grid container
+                                          direction="row"
+                                          justify="space-between"
+                                          alignItems="center"
+                                    >
+                                        <KeyboardDatePicker
+                                            margin="normal"
+                                            id="date-picker-dialog"
+                                            label="Date picker dialog"
+                                            format="MM/dd/yyyy"
+                                            value={selectedDate}
+                                            onChange={handleDateChange}
+                                            KeyboardButtonProps={{
+                                                'aria-label': 'change date',
+                                            }}
+                                        />
+                                        <KeyboardTimePicker
+                                            margin="normal"
+                                            id="time-picker"
+                                            label="Time picker"
+                                            value={selectedDate}
+                                            onChange={handleDateChange}
+                                            KeyboardButtonProps={{
+                                                'aria-label': 'change time',
+                                            }}
+                                        />
+                                    </Grid>
+                                </MuiPickersUtilsProvider>
+                            </Box>
+                        </ExpansionPanelDetails>
+                        <Divider />
+                        <ExpansionPanelActions>
+                            <Button size="small">Cancel</Button>
+                            <Button size="small" color="primary">
+                                Save
+                            </Button>
+                        </ExpansionPanelActions>
+                    </ExpansionPanel>
+                    <ExpansionPanel>
+                        <ExpansionPanelSummary
+                            expandIcon={<ExpandMoreIcon />}
+                            aria-controls="panel1c-content"
+                            id="panel1c-header"
+                        >
+                            <Grid container
+                                  direction="row"
+                                  justify="space-between"
+                                  alignItems="center"
+                            >
+                                <Typography className={classes.heading}>Client Demo with Martin</Typography>
+                                <Chip label="This Week" color="primary"/>
+                            </Grid>
+
+                        </ExpansionPanelSummary>
+                        <ExpansionPanelDetails className={classes.details}>
+
+                            <Box width="100%">
+
+                                <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                                    <Grid container wrap="nowrap" spacing={2}>
+                                        <Grid item xs>
+                                            <Typography className={classes.description}>Showcase provisional prototype with React and Material UI directly on the continous integration cloud server.</Typography>
+                                        </Grid>
+                                    </Grid>
+
+                                    <Grid container
+                                          direction="row"
+                                          justify="space-between"
+                                          alignItems="center"
+                                    >
+                                        <KeyboardDatePicker
+                                            margin="normal"
+                                            id="date-picker-dialog"
+                                            label="Date picker dialog"
+                                            format="MM/dd/yyyy"
+                                            value={selectedDate}
+                                            onChange={handleDateChange}
+                                            KeyboardButtonProps={{
+                                                'aria-label': 'change date',
+                                            }}
+                                        />
+                                        <KeyboardTimePicker
+                                            margin="normal"
+                                            id="time-picker"
+                                            label="Time picker"
+                                            value={selectedDate}
+                                            onChange={handleDateChange}
+                                            KeyboardButtonProps={{
+                                                'aria-label': 'change time',
+                                            }}
+                                        />
+                                    </Grid>
+                                </MuiPickersUtilsProvider>
+                            </Box>
+                        </ExpansionPanelDetails>
+                        <Divider />
+                        <ExpansionPanelActions>
+                            <Button size="small">Cancel</Button>
+                            <Button size="small" color="primary">
+                                Save
+                            </Button>
+                        </ExpansionPanelActions>
+                    </ExpansionPanel>
+                    <ExpansionPanel>
+                        <ExpansionPanelSummary
+                            expandIcon={<ExpandMoreIcon />}
+                            aria-controls="panel1c-content"
+                            id="panel1c-header"
+                        >
+                            <Grid container
+                                  direction="row"
+                                  justify="space-between"
+                                  alignItems="center"
+                            >
+                                <Typography className={classes.heading}>Plan trip to Paris</Typography>
+                                <Chip label="To do" color="default"/>
+                            </Grid>
+
+                        </ExpansionPanelSummary>
+                        <ExpansionPanelDetails className={classes.details}>
+
+                            <Box width="100%">
+
+                                <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                                    <Grid container wrap="nowrap" spacing={2}>
+                                        <Grid item xs>
+                                            <Typography className={classes.description}>Accomodation and travel needs to be booked ahead.</Typography>
+                                        </Grid>
+                                    </Grid>
+
+                                    <Grid container
+                                          direction="row"
+                                          justify="space-between"
+                                          alignItems="center"
+                                    >
+                                        <KeyboardDatePicker
+                                            margin="normal"
+                                            id="date-picker-dialog"
+                                            label="Date picker dialog"
+                                            format="MM/dd/yyyy"
+                                            value={selectedDate}
+                                            onChange={handleDateChange}
+                                            KeyboardButtonProps={{
+                                                'aria-label': 'change date',
+                                            }}
+                                        />
+                                        <KeyboardTimePicker
+                                            margin="normal"
+                                            id="time-picker"
+                                            label="Time picker"
+                                            value={selectedDate}
+                                            onChange={handleDateChange}
+                                            KeyboardButtonProps={{
+                                                'aria-label': 'change time',
+                                            }}
+                                        />
+                                    </Grid>
+                                </MuiPickersUtilsProvider>
+                            </Box>
+                        </ExpansionPanelDetails>
+                        <Divider />
+                        <ExpansionPanelActions>
+                            <Button size="small">Cancel</Button>
+                            <Button size="small" color="primary">
+                                Save
+                            </Button>
+                        </ExpansionPanelActions>
+                    </ExpansionPanel>
                 </TabPanel>
 
-                {/*<List>*/}
-                {/*    {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (*/}
-                {/*        <ListItem button key={text}>*/}
-                {/*            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>*/}
-                {/*            <ListItemText primary={text} />*/}
-                {/*        </ListItem>*/}
-                {/*    ))}*/}
-                {/*</List>*/}
-                {/*<Divider />*/}
-                {/*<List>*/}
-                {/*    {['All mail', 'Trash', 'Spam'].map((text, index) => (*/}
-                {/*        <ListItem button key={text}>*/}
-                {/*            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>*/}
-                {/*            <ListItemText primary={text} />*/}
-                {/*        </ListItem>*/}
-                {/*    ))}*/}
-                {/*</List>*/}
             </Drawer>
 
         </div>
