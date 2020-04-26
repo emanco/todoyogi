@@ -131,7 +131,7 @@ export default () => {
     <React.Fragment>
       {/*<EditingOptionsSelector options={editingOptions} onOptionsChange={handleEditingOptionsChange} />*/}
       <Paper>
-        <Scheduler data={data} height={'100%'}>
+        <Scheduler data={data} height={'100%'} firstDayOfWeek={1}>
           <ViewState currentDate={date} onCurrentDateChange={(currentDate) => { setDate(currentDate) }}/>
           <EditingState
             onCommitChanges={onCommitChanges}
@@ -142,11 +142,11 @@ export default () => {
           <IntegratedEditing />
           <WeekView startDayHour={9} endDayHour={19} timeTableCellComponent={TimeTableCell} />
 
-          
+
           {/*<Toolbar />*/}
           {/*<DateNavigator />*/}
           {/*<TodayButton />*/}
-          <Appointments />
+          {/*<Appointments />*/}
 
           <AppointmentTooltip showOpenButton showDeleteButton={allowDeleting} />
           <AppointmentForm
