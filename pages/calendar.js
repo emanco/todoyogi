@@ -12,7 +12,8 @@ import {
   Appointments,
   AppointmentForm,
   AppointmentTooltip,
-  DragDropProvider
+  DragDropProvider,
+  AllDayPanel,
 } from '@devexpress/dx-react-scheduler-material-ui';
 import { appointments } from '../src/data/appointments';
 const useStyles = makeStyles(theme => ({
@@ -55,7 +56,7 @@ const EditingOptionsSelector = ({ options, onOptionsChange }) => {
     </div>
   );
 };
-export default (callback: T, deps: React.DependencyList) => {
+export default () => {
   const [data, setData] = React.useState(appointments);
   const [editingOptions, setEditingOptions] = React.useState({
     allowAdding: true,
@@ -91,7 +92,7 @@ export default (callback: T, deps: React.DependencyList) => {
   const onAddedAppointmentChange = React.useCallback(appointment => {
     setAddedAppointment(appointment);
     setIsAppointmentBeingCreated(true);
-  }, deps);
+  });
   const handleEditingOptionsChange = React.useCallback(({ target }) => {
     const { value } = target;
     const { [value]: checked } = editingOptions;
@@ -125,9 +126,9 @@ export default (callback: T, deps: React.DependencyList) => {
   ]);
   return (
     <React.Fragment>
-      <EditingOptionsSelector options={editingOptions} onOptionsChange={handleEditingOptionsChange} />
+      {/*<EditingOptionsSelector options={editingOptions} onOptionsChange={handleEditingOptionsChange} />*/}
       <Paper>
-        <Scheduler data={data} height={600}>
+        <Scheduler data={data} height={'100%'}>
           <ViewState currentDate={currentDate} />
           <EditingState
             onCommitChanges={onCommitChanges}
@@ -145,6 +146,7 @@ export default (callback: T, deps: React.DependencyList) => {
             commandButtonComponent={CommandButton}
             readOnly={isAppointmentBeingCreated ? false : !allowUpdating}
           />
+          <AllDayPanel />
           <DragDropProvider allowDrag={allowDrag} allowResize={allowResize} />
         </Scheduler>
       </Paper>
