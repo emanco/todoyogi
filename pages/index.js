@@ -14,6 +14,9 @@ import {
   AppointmentTooltip,
   DragDropProvider,
   AllDayPanel,
+  Toolbar,
+  DateNavigator,
+  TodayButton,
 } from '@devexpress/dx-react-scheduler-material-ui';
 import { appointments } from '../src/data/appointments';
 const useStyles = makeStyles(theme => ({
@@ -27,7 +30,6 @@ const useStyles = makeStyles(theme => ({
     fontSize: '1rem'
   }
 }));
-const currentDate = '2018-06-27';
 const editingOptionsList = [
   { id: 'allowAdding', text: 'Adding' },
   { id: 'allowDeleting', text: 'Deleting' },
@@ -57,6 +59,7 @@ const EditingOptionsSelector = ({ options, onOptionsChange }) => {
   );
 };
 export default () => {
+  const [date, setDate] = React.useState('2018-06-27');
   const [data, setData] = React.useState(appointments);
   const [editingOptions, setEditingOptions] = React.useState({
     allowAdding: true,
@@ -129,7 +132,7 @@ export default () => {
       {/*<EditingOptionsSelector options={editingOptions} onOptionsChange={handleEditingOptionsChange} />*/}
       <Paper>
         <Scheduler data={data} height={'100%'}>
-          <ViewState currentDate={currentDate} />
+          <ViewState currentDate={date} onCurrentDateChange={(currentDate) => { setDate(currentDate) }}/>
           <EditingState
             onCommitChanges={onCommitChanges}
             addedAppointment={addedAppointment}
@@ -139,6 +142,10 @@ export default () => {
           <IntegratedEditing />
           <WeekView startDayHour={9} endDayHour={19} timeTableCellComponent={TimeTableCell} />
 
+          
+          {/*<Toolbar />*/}
+          {/*<DateNavigator />*/}
+          {/*<TodayButton />*/}
           <Appointments />
 
           <AppointmentTooltip showOpenButton showDeleteButton={allowDeleting} />

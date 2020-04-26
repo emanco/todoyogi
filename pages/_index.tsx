@@ -202,7 +202,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 
-export default function Index() {
+export default function _index() {
 
   const classes = useStyles();
   // const theme = useTheme();
