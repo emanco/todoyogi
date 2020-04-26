@@ -146,7 +146,7 @@ export default () => {
           {/*<Toolbar />*/}
           {/*<DateNavigator />*/}
           {/*<TodayButton />*/}
-          {/*<Appointments />*/}
+          <Appointments />
 
           <AppointmentTooltip showOpenButton showDeleteButton={allowDeleting} />
           <AppointmentForm
