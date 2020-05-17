@@ -27,8 +27,6 @@ class Index extends React.Component {
       <div>
         <Head>
           <title>TodoYogi</title>
-          <link href="./static/dx.common.css" rel="stylesheet" />
-          <link href="./static/dx.material.blue.light.css" rel="stylesheet" />
           <link href="./static/styles.css" rel="stylesheet" />
         </Head>
       <React.Fragment>
@@ -83,6 +81,8 @@ class Index extends React.Component {
         appointments: [...this.state.appointments]
       });
     }
+
+    console.log(this.state);
   }
 
   onAppointmentAdd(e) {
@@ -97,6 +97,8 @@ class Index extends React.Component {
         appointments: [...this.state.appointments]
       });
     }
+
+    console.log(this.state);
   }
 
   onListDragStart(e) {

@@ -1,3 +1,6 @@
+@import 'dx.common.css';
+@import 'dx.material.blue.light.css';
+
 #scroll, #list {
   position: absolute;
   left: 0;
