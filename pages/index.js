@@ -5,7 +5,7 @@ import Scheduler, { AppointmentDragging } from 'devextreme-react/scheduler';
 import Draggable from 'devextreme-react/draggable';
 import ScrollView from 'devextreme-react/scroll-view';
 
-import { appointments, tasks } from '../../todoyogi/src/data/drag.js';
+import { appointments, tasks } from '../src/data/drag.js';
 
 const currentDate = new Date(2017, 4, 22);
 const views = [{ name: '3 Days', type: 'day', intervalCount: 3 }, {name: 'Week', type: 'week'}, {type: 'month'}];
