@@ -8,7 +8,7 @@ import ScrollView from 'devextreme-react/scroll-view';
 import { appointments, tasks } from '../../todoyogi/src/data/drag-data.js';
 
 const currentDate = new Date(2017, 4, 22);
-const views = [{ type: 'day', intervalCount: 5 }];
+const views = [{ name: '3 Days', type: 'day', intervalCount: 3 }, {name: 'Week', type: 'week'}, {type: 'month'}];
 const draggingGroupName = 'appointmentsGroup';
 
 class Index extends React.Component {
@@ -57,6 +57,7 @@ class Index extends React.Component {
           dataSource={appointments}
           views={views}
           defaultCurrentDate={currentDate}
+          height={'100vh'}
           startDayHour={6}
           editing={true}>
           <AppointmentDragging
